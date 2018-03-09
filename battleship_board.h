@@ -1,3 +1,5 @@
 //Function prototypes
-void print_board(void);
+void printBoard(void);
+void createComp(void);
+void createPlayer(void);
 

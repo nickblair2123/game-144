@@ -28,7 +28,16 @@ void startGame() {
    char compMovesHits[2][L];
 
 
+   printLogo();
+   createComp();
+   createPlayer();
 
    //Test Print Board
-   print_board();
+   printBoard();
+}
+
+void printLogo() {
+
+   //placeholder
+   printf("Welcome to BATTLESHIP!\n\n");
 }

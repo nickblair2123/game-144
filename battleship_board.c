@@ -7,7 +7,7 @@
 #define N 41
 
 //Fuction for menu logo
-void print_board(void)
+void printBoard(void)
 {
    //Setup computer and player boards 
    char p_board[11][N] = {{'-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-'},
@@ -69,8 +69,17 @@ void print_board(void)
              printf(" ");
       printf("\n");
    }
+}
 
 
+void createComp() {
 
+   //placeholder
+   printf("Create computer ships\n\n");
+}
 
+void createPlayer() {
+
+   //placeholder
+   printf("Player to create thier shps here\n\n");
 }
