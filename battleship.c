@@ -1,17 +1,13 @@
 #include <stdio.h>
 #include <math.h>
 #include <ctype.h>
-#include "battleship_board.h"
-
-
-
-
-
-
+#include "battleship_game.h"
 
 //Print order and start store
 int main(){
-   print_board();
+
+   //Start Game
+   startGame();
 }
 
 
