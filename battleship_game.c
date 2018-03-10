@@ -41,6 +41,9 @@ void startGame() {
       createPlayer();
 
       firstPlayer(&turn);
+      
+      //uncomment when complete	
+      //exit = start_exit();
 
       //loop for gameplay
       do {
