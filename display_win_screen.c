@@ -1,5 +1,4 @@
 //display win or loss screen
-#include <stdio.h>
 
 void diaplay_win (int the_winner){
 

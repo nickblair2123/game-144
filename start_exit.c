@@ -1,5 +1,4 @@
 //start game or exit game screen
-#include <stdio.h>
 
 char start_game ()
 {
