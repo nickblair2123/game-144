@@ -1,7 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include <ctype.h>
 #include <stdbool.h>
+#include <time.h>
 #include "battleship_game.h"
 #include "battleship_board.h"
 
@@ -20,22 +22,24 @@ void startGame() {
    char compB2[2][2] = {0};
    char compB1[2][1] = {0};
    bool compHit = false;
-   char turn[5];
+   int turn;
    bool winner = false;
    char playerMovesMiss[2][L] = {0};
    char compMovesMiss[2][L] = {0};
    char playerMovesHits[2][L] = {0};
    char compMovesHits[2][L] = {0};
    char exit = 'Y';
-   char clear_return;
-
+   char clearReturn;
 
    printLogo();
+
    do {
       //create pieces for computer and player
       createComp();
       createPlayer();
 
+      firstPlayer(&turn);
+      printf("\n\n%d", turn);
       //loop for gameplay
       do {
           //Test Print Board
@@ -47,7 +51,7 @@ void startGame() {
       do {
             printf("Play again? (y/n): ");
             exit = toupper(getchar());
-            clear_return = getchar();
+            clearReturn = getchar();
       } while ( exit != 'Y' && exit != 'N' );
    } while ( exit != 'N' );
 }
@@ -56,4 +60,34 @@ void printLogo() {
 
    //placeholder
    printf("Welcome to BATTLESHIP!\n\n");
+}
+
+void firstPlayer(int *turn) {
+   char clearReturn;
+   char coinToss;
+   int  coinFlip;
+
+   do {
+      printf("Pick Heads or Tails to see who will go first. (h/t): ");
+      coinToss = toupper(getchar());
+      clearReturn = getchar();
+   } while ( coinToss != 'H' && coinToss!= 'T' );
+
+   srand(time(NULL));
+   coinFlip = rand() % 2;
+   printf("%d", coinFlip);
+   // turn 0 for player / 1 for computer
+   if (coinFlip == 0) {
+      if (coinToss == 'H') {
+         *turn = 0;
+      } else {
+         *turn = 1;
+      }
+   } else {
+      if (coinToss == 'T') {
+         *turn = 0;
+      } else {
+         *turn = 1;
+      }
+   }
 }
