@@ -1,7 +1,7 @@
 //start game or exit game screen
 #include <stdio.h>
 
-void start_game ()
+char start_game ()
 {
 	char choice;
 	
@@ -13,11 +13,11 @@ void start_game ()
 		switch (choice)){
 			case 's':
 				start;
-				break;
+				return 'N';
 			case 'e':
 				exit;
-				break;
+				return 'Y';
 		}
-	}
+	} while (choice != 's' && choice != 'e');
 }
 
