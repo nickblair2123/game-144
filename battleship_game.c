@@ -31,7 +31,7 @@ void startGame() {
    char compMovesHits[2][L] = {0};
    char exit = 'Y';
    char clearReturn;
-
+   int count = 0;
    printLogo();
 
    do {
@@ -43,6 +43,7 @@ void startGame() {
 
       //loop for gameplay
       do {
+          system("clear");
           switch (turn) {
              case 0:   playerTurn(&turn);
                        break;
@@ -51,7 +52,9 @@ void startGame() {
           }
           //Test Print Board
           printBoard();
-          winner = true;
+          if (count == 5)
+             winner = true;
+          count++;
       } while ( winner == false );
 
       //after game check if user wants to play again.
