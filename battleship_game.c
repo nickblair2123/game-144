@@ -39,7 +39,7 @@ void startGame() {
       createPlayer();
 
       firstPlayer(&turn);
-      printf("\n\n%d", turn);
+
       //loop for gameplay
       do {
           //Test Print Board
@@ -75,7 +75,7 @@ void firstPlayer(int *turn) {
 
    srand(time(NULL));
    coinFlip = rand() % 2;
-   printf("%d", coinFlip);
+
    // turn 0 for player / 1 for computer
    if (coinFlip == 0) {
       if (coinToss == 'H') {
