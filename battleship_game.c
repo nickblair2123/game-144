@@ -52,6 +52,8 @@ void startGame() {
           }
           //Test Print Board
           printBoard();
+
+          //temp counter to test function until we have method to check for winner
           if (count == 5)
              winner = true;
           count++;
