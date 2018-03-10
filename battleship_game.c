@@ -25,6 +25,7 @@ void startGame() {
    bool compHit = false;
    int turn;
    bool winner = false;
+   int the_winner = 0;
    char playerMovesMiss[2][L] = {0};
    char compMovesMiss[2][L] = {0};
    char playerMovesHits[2][L] = {0};
@@ -58,6 +59,10 @@ void startGame() {
              winner = true;
           count++;
       } while ( winner == false );
+	
+	//uncomment when complete
+	//display_win_screen(the_winner);
+	
 
       //after game check if user wants to play again.
       do {
