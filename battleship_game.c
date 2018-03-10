@@ -22,18 +22,30 @@ void startGame() {
    bool compHit = false;
    char turn[5];
    bool winner = false;
-   char playerMovesMiss[2][L];
-   char compMovesMiss[2][L];
-   char playerMovesHits[2][L];
-   char compMovesHits[2][L];
+   char playerMovesMiss[2][L] = {0};
+   char compMovesMiss[2][L] = {0};
+   char playerMovesHits[2][L] = {0};
+   char compMovesHits[2][L] = {0};
+   char exit = 'Y';
+   char clear_return;
 
 
    printLogo();
-   createComp();
-   createPlayer();
+   do {
+      do {
+          createComp();
+          createPlayer();
 
-   //Test Print Board
-   printBoard();
+          //Test Print Board
+          printBoard();
+          winner = true;
+      } while ( winner == false );
+      do {
+            printf("Play again? (y/n): ");
+            exit = toupper(getchar());
+            clear_return = getchar();
+      } while ( exit != 'Y' && exit != 'N' );
+   } while ( exit != 'N' );
 }
 
 void printLogo() {
