@@ -6,6 +6,7 @@
 #include <time.h>
 #include "battleship_game.h"
 #include "battleship_board.h"
+#include "turn_play.h"
 
 //array lenth
 #define L 100
@@ -42,6 +43,12 @@ void startGame() {
 
       //loop for gameplay
       do {
+          switch (turn) {
+             case 0:   playerTurn(&turn);
+                       break;
+             case 1:   compTurn(&turn);
+                       break;
+          }
           //Test Print Board
           printBoard();
           winner = true;
