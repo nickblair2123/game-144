@@ -32,14 +32,18 @@ void startGame() {
 
    printLogo();
    do {
-      do {
-          createComp();
-          createPlayer();
+      //create pieces for computer and player
+      createComp();
+      createPlayer();
 
+      //loop for gameplay
+      do {
           //Test Print Board
           printBoard();
           winner = true;
       } while ( winner == false );
+
+      //after game check if user wants to play again.
       do {
             printf("Play again? (y/n): ");
             exit = toupper(getchar());
