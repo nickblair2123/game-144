@@ -1,3 +1,7 @@
 //For player and computer turn play
-void playerTurn(int *turn);
+
+//array lenth
+#define L 100
+
+void playerTurn(char *x, char *y);
 void compTurn(int *turn);
