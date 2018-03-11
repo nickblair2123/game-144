@@ -4,4 +4,5 @@
 #define L 100
 
 void playerTurn(char *x, char *y);
-void compTurn(int *turn);
+void compTurn(char yHit, char xHit, char *y, char *x);
+void firstPlayer(int *turn);

@@ -25,7 +25,7 @@ void startGame() {
    char compB3[2][3] = {0};
    char compB2[2][2] = {0};
    char compB1[2][1] = {0};
-   bool compHit = false;
+
    int turn;
    bool winner = false;
    char playerMovesMiss[2][L] = {'0','0'};
@@ -36,8 +36,10 @@ void startGame() {
    char clearReturn;
    int  turnCount = 0, pHitCount = 0, pMissCount = 0;
    char move[2];
+   char compHit[2] = {'x','x'};
    int  hit, row, col;
    char valid = 'Y';
+
 
    printLogo();
 
@@ -118,7 +120,9 @@ void startGame() {
              // Set turn to Computer
              turn = 1;
           } else {
-             compTurn(&turn);
+             compTurn( compHit[0], compHit[1], &move[0], &move[1]);
+             printf("Comps Turn: %c and %c\n", move[0], move[1]);
+             turn = 0;
           }
           //Test Print Board
           printBoard();
@@ -148,32 +152,3 @@ void printLogo() {
    printf("Welcome to BATTLESHIP!\n\n");
 }
 
-void firstPlayer(int *turn) {
-   char clearReturn;
-   char coinToss;
-   int  coinFlip;
-
-   do {
-      printf("Pick Heads or Tails to see who will go first. (h/t): ");
-      coinToss = toupper(getchar());
-      clearReturn = getchar();
-   } while ( coinToss != 'H' && coinToss!= 'T' );
-
-   srand(time(NULL));
-   coinFlip = rand() % 2;
-
-   // turn 0 for player / 1 for computer
-   if (coinFlip == 0) {
-      if (coinToss == 'H') {
-         *turn = 0;
-      } else {
-         *turn = 1;
-      }
-   } else {
-      if (coinToss == 'T') {
-         *turn = 0;
-      } else {
-         *turn = 1;
-      }
-   }
-}
