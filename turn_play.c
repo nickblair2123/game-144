@@ -14,34 +14,34 @@ void playerTurn (char *x, char *y) {
     char clearReturn;
     int  testY;
     do {
-       printf("Select location of next attack. X-axis (a-j): ");
-       inX = toupper(getchar());
+       printf("Select location of next attack. Y-axis (A-J): ");
+       inY = toupper(getchar());
        clearReturn = getchar();
-       switch (inX) {
+       switch (inY) {
           case 'A' ... 'J':
-             xValid = 'Y';
+             yValid = 'Y';
              break;
           default:
              printf("Invalid selection.\n");
              break;
        }
-    } while ( xValid != 'Y');
+    } while ( yValid != 'Y');
 
     do {
-       printf("Select location of next attack. Y-axis (0-9): ");
-       inY = getchar();
+       printf("Select location of next attack. X-axis (0-9): ");
+       inX = getchar();
        clearReturn = getchar();
 
-       // TODO Fix Y axis check
-       if ( inY >= '0' && inY <= '9') {
-          yValid = 'Y';
+       // TODO Fix X axis check
+       if ( inX >= '0' && inX <= '9') {
+          xValid = 'Y';
        } else {
           printf("Invalid selection.\n");
        }
-    } while ( yValid != 'Y');
+    } while ( xValid != 'Y');
 
-    *x = inX;
-    *y = inY;
+    *x = inY;
+    *y = inX;
 }
 
 void compTurn (int *turn) {
