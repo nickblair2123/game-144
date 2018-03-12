@@ -1,6 +1,6 @@
 //start game or exit game screen
 
-char start_game ()
+char start_exit ()
 {
 	char choice;
 	
@@ -9,14 +9,11 @@ char start_game ()
 		scanf("%c",&choice);
 		getchar();
 		
-		switch (choice)){
+		switch (choice){
 			case 's':
-				start;
 				return 'N';
 			case 'e':
-				exit;
 				return 'Y';
 		}
 	} while (choice != 's' && choice != 'e');
 }
-
