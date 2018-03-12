@@ -16,10 +16,10 @@ void playerTurn (char *x, char *y) {
     char clearReturn;
     int  testY;
     do {
-       printf("Select location of next attack. X-axis (a-j): ");
+       printf("Select location of next attack. Y-axis (a-j): ");
        inX = toupper(getchar());
        clearReturn = getchar();
-       printf("Select location of next attack. Y-axis (0-9): ");
+       printf("Select location of next attack. X-axis (0-9): ");
        inY = getchar();
        clearReturn = getchar();
        switch (inX) {
@@ -41,16 +41,47 @@ void compTurn (char yHit, char xHit, char *y, char *x) {
     // Check if hit exist
     int yRan, xRan;
     char yAxis[10] = {'A','B','C','D','E','F','G','H','I','J'};
-    char xAxis[10] = {'0','1','2','3','4','5','6','7','8','9'};
+    char test, xAxis[10] = {'0','1','2','3','4','5','6','7','8','9'};
+    char nextHit [2][4] = {'0','0'};
+    int nextHitCounter = 0;
+    int nextHitRand;
 
     srand(time(NULL));
     
     if ( yHit == 'x' ) {
        yRan = rand() % 10;
        *y = yAxis[(yRan - 1)];
-       srand(time(NULL));
        xRan = rand() % 10;
        *x = xAxis[(xRan - 1)];
+    } else { 
+       if ( yHit != 'A' ) {
+           printf("a");
+           nextHit[0][nextHitCounter] = yHit - 1;
+           nextHit[1][nextHitCounter] = xHit;
+           nextHitCounter++;
+       }
+       if ( yHit != 'J' ) {
+           printf("j");
+           nextHit[0][nextHitCounter] = yHit + 1;
+           nextHit[1][nextHitCounter] = xHit;
+           nextHitCounter++;
+       }
+       if ( xHit != '0' ) {
+           printf("0");
+           nextHit[0][nextHitCounter] = yHit;
+           nextHit[1][nextHitCounter] = xHit - 1;
+           nextHitCounter++;
+       }
+       if ( xHit != '9' ) {
+           printf("9");
+           nextHit[0][nextHitCounter] = yHit;
+           nextHit[1][nextHitCounter] = xHit + 1;
+           nextHitCounter++;
+       }
+       nextHitRand = rand() % nextHitCounter;
+       *y = nextHit[0][(nextHitRand - 1)];
+       *x = nextHit[1][(nextHitRand - 1)];
+       printf("NEXT HIT: %c and %c\n", *y, *x);
     }
     printf("Comp Turn\n");
 }
