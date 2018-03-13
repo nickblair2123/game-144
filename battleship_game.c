@@ -8,8 +8,8 @@
 #include "battleship_game.h"
 #include "battleship_board.h"
 #include "turn_play.h"
-//#include "display_win_screen.c"
-//#include "start_exit.c"
+#include "display_win_screen.c"
+#include "start_exit.c"
 
 //array lenth
 #define L 100
@@ -37,6 +37,7 @@ void startGame() {
 
    int turn, hit, col;
    bool winner = false;
+   int the_winner = 0;
    char playerMovesMiss[2][L] = {'0','0'};
    char compMovesMiss[2][L] = {'0','0'};
    char playerMovesHits[2][L] = {'0','0'};
@@ -59,8 +60,7 @@ void startGame() {
 
       firstPlayer(&turn);
       
-      //uncomment when complete	
-      //exit = start_exit();
+      exit = start_exit();
 
       //loop for gameplay
       do {
@@ -210,8 +210,7 @@ void startGame() {
           turnCount ++;
       } while ( winner == false );
 	
-	//uncomment when complete
-	//display_win_screen(the_winner);
+	display_win_screen(the_winner);
 	
 
       //after game check if user wants to play again.

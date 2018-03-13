@@ -1,14 +1,13 @@
 //display win or loss screen
+ 
 
-void diaplay_win (int the_winner){
+void display_win_screen (int the_winner){
 
-	if (the winner == '1')
-		printf("Congratulations!! You won!")
+	if (the_winner == '0'){
+		printf("Congratulations!! You WON!");
 
-	else {
-		printf("Sorry, you lost.")
+	} else {
+		printf("Sorry, you LOST.");
+		}
 	}
-
-}
-
 
