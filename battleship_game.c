@@ -38,9 +38,9 @@ void startGame() {
    int turn, hit, col;
    bool winner = false;
    char playerMovesMiss[2][L] = {'0','0'};
-   char compMovesMiss[2][L] = {0};
-   char playerMovesHits[2][L] = {'0'};
-   char compMovesHits[2][L] = {0};
+   char compMovesMiss[2][L] = {'0','0'};
+   char playerMovesHits[2][L] = {'0','0'};
+   char compMovesHits[2][L] = {'0','0'};
    char exit = 'Y';
    char clearReturn;
    int  turnCount = 0, pHitCount = 0, pMissCount = 0;

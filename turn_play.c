@@ -11,30 +11,30 @@
 
 void playerTurn (char *x, char *y) {
     char inX, inY;
-    char xValid = 'N';
     char yValid = 'N';
+    char xValid = 'N';
     char clearReturn;
     int  testY;
     do {
        printf("Select location of next attack. Y-axis (a-j): ");
-       inX = toupper(getchar());
+       inY = toupper(getchar());
        clearReturn = getchar();
        printf("Select location of next attack. X-axis (0-9): ");
-       inY = getchar();
+       inX = getchar();
        clearReturn = getchar();
-       switch (inX) {
+       switch (inY) {
           case 'A' ... 'J':
-             xValid = 'Y';
+             yValid = 'Y';
              break;
           default:
              break;
        }
-       if ( inY >= '0' && inY <= '9') 
-          yValid = 'Y';
-    } while ( xValid != 'Y' && yValid != 'Y');
+       if ( inX >= '0' && inX <= '9') 
+          xValid = 'Y';
+    } while ( xValid != 'Y' && xValid != 'Y');
 
-    *x = inX;
-    *y = inY;
+    *x = inY;
+    *y = inX;
 }
 
 void compTurn (char yHit, char xHit, char *y, char *x) {
@@ -45,45 +45,59 @@ void compTurn (char yHit, char xHit, char *y, char *x) {
     char nextHit [2][4] = {'0','0'};
     int nextHitCounter = 0;
     int nextHitRand;
+    char yValid, xValid;
+
 
     srand(time(NULL));
-    
-    if ( yHit == 'x' ) {
-       yRan = rand() % 10;
-       *y = yAxis[(yRan - 1)];
-       xRan = rand() % 10;
-       *x = xAxis[(xRan - 1)];
-    } else { 
-       if ( yHit != 'A' ) {
-           printf("a");
-           nextHit[0][nextHitCounter] = yHit - 1;
-           nextHit[1][nextHitCounter] = xHit;
-           nextHitCounter++;
+    do {
+        yValid = 'N';
+        xValid = 'N';
+
+        if ( yHit == 'x' ) {
+           yRan = rand() % 10;
+           *y = yAxis[(yRan)];
+           xRan = rand() % 10;
+           *x = xAxis[(xRan)];
+        } else { 
+           if ( yHit != 'A' ) {
+               printf("a");
+               nextHit[0][nextHitCounter] = yHit - 1;
+               nextHit[1][nextHitCounter] = xHit;
+               nextHitCounter++;
+           }
+           if ( yHit != 'J' ) {
+               printf("j");
+               nextHit[0][nextHitCounter] = yHit + 1;
+               nextHit[1][nextHitCounter] = xHit;
+               nextHitCounter++;
+           }
+           if ( xHit != '0' ) {
+               printf("0");
+               nextHit[0][nextHitCounter] = yHit;
+               nextHit[1][nextHitCounter] = xHit - 1;
+               nextHitCounter++;
+           }
+           if ( xHit != '9' ) {
+               printf("9");
+               nextHit[0][nextHitCounter] = yHit;
+               nextHit[1][nextHitCounter] = xHit + 1;
+               nextHitCounter++;
+           }
+           nextHitRand = rand() % nextHitCounter;
+           *y = nextHit[0][(nextHitRand - 1)];
+           *x = nextHit[1][(nextHitRand - 1)];
        }
-       if ( yHit != 'J' ) {
-           printf("j");
-           nextHit[0][nextHitCounter] = yHit + 1;
-           nextHit[1][nextHitCounter] = xHit;
-           nextHitCounter++;
+
+       switch (*y) {
+          case 'A' ... 'J':
+             yValid = 'Y';
+             break;
+          default:
+             break;
        }
-       if ( xHit != '0' ) {
-           printf("0");
-           nextHit[0][nextHitCounter] = yHit;
-           nextHit[1][nextHitCounter] = xHit - 1;
-           nextHitCounter++;
-       }
-       if ( xHit != '9' ) {
-           printf("9");
-           nextHit[0][nextHitCounter] = yHit;
-           nextHit[1][nextHitCounter] = xHit + 1;
-           nextHitCounter++;
-       }
-       nextHitRand = rand() % nextHitCounter;
-       *y = nextHit[0][(nextHitRand - 1)];
-       *x = nextHit[1][(nextHitRand - 1)];
-       printf("NEXT HIT: %c and %c\n", *y, *x);
-    }
-    printf("Comp Turn\n");
+       if ( *x >= '0' && *x <= '9') 
+          yValid = 'Y';
+    } while ( xValid != 'Y' && yValid != 'Y');
 }
 
 void firstPlayer(int *turn) {
