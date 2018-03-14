@@ -12,8 +12,7 @@
 //random placement of ship
 char rand_ship(){
 
-  return "o o"[rand() % 5];
-  return "    "[rand() % 5];
+  return "o   o"[rand() % 8];
  
  
 }
@@ -57,16 +56,13 @@ rand_ship != " ";
 //horizontal ships breaks between lines
 if(!comp_board[r][c]){
 int i;
-int o= "o";
-	for (o= 0; o <=i;o++){
+	for (rand_ship== 0; rand_ship <=i;){
 		if (rand_ship > 0){
-			--i;
-			comp_board[r][c]=0;
+			--i;			
 			break;
 		}
 	}
 }
-
   
 	
 		
