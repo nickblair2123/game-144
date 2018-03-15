@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define row_length 10
-#define col_length 11
 #include <ctype.h>
 
     const char alpha_header[row_length] =  {'A','B','C','D','E','F','G','H','I','J'};
@@ -140,8 +138,8 @@ reenter:
 
 void print_board(){
     system("clear");
-     r = 0;
-     c = 0;
+     int r = 0;
+     int c = 0;
 
         printf("   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | \n");
         printf("--------------------------------------------\n");
