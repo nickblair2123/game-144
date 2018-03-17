@@ -292,8 +292,51 @@ void startGame() {
           }
 
           //temp counter to test function until we have method to check for winner
-          if (turnCount == 15)
+          winner = true;
+          for (col= 0; col< 4 ; col++) {
+             if ( compB4[0][col] != 'x' && compB4[1][col] != 'x' ) {
+                winner = false;
+             }
+          }
+          for (col= 0; col< 3 ; col++) {
+             if ( compB3[0][col] != 'x' && compB3[1][col] != 'x' ) {
+                winner = false;
+             }
+          }
+          for (col= 0; col< 2 ; col++) {
+             if ( compB2[0][col] != 'x' && compB2[1][col] != 'x' ) {
+                winner = false;
+             }
+             if ( compB1[0][col] != 'x' && compB1[1][col] != 'x' ) {
+                winner = false;
+             }
+          }
+          if ( winner == true);
+             the_winner = 1;
+
+          if ( winner != true) {
              winner = true;
+             for (col= 0; col< 4 ; col++) {
+                if ( playerB4[0][col] != 'x' && playerB4[1][col] != 'x' ) {
+                   winner = false;
+                }
+             }
+             for (col= 0; col< 3 ; col++) {
+                if ( playerB3[0][col] != 'x' && playerB3[1][col] != 'x' ) {
+                   winner = false;
+                }
+             }
+             for (col= 0; col< 2 ; col++) {
+                if ( playerB2[0][col] != 'x' && playerB2[1][col] != 'x' ) {
+                   winner = false;
+                }
+                if ( playerB1[0][col] != 'x' && playerB1[1][col] != 'x' ) {
+                   winner = false;
+                }
+             }
+             if ( winner == true);
+                the_winner = 0;
+          }
           turnCount ++;
       } while ( winner == false );
 	
