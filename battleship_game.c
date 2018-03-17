@@ -5,7 +5,7 @@
 #include <stdbool.h>
 #include <time.h>
 #include <unistd.h>
-#include "battleship_game.h"
+#include "battleship_game.h" 
 #include "turn_play.h"
 #include "display_win_screen.c"
 #include "start_exit.c"
@@ -14,7 +14,9 @@
 
 //array length
 #define L 100
+//header for computer and player board
 const char alpha_header[row_length] =  {'A','B','C','D','E','F','G','H','I','J'};
+//player board display
 char player_board_array[row_length][col_length] =  {
                                     {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
                                     {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
@@ -27,7 +29,7 @@ char player_board_array[row_length][col_length] =  {
                                     {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
                                     {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
                                     };
-
+//computer board display
 char comp_board_array[row_length][col_length] =  {
                                     {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
                                     {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
@@ -41,12 +43,10 @@ char comp_board_array[row_length][col_length] =  {
                                     {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
                                     };
 
-
-
-
+//Start game
 void startGame() {
 
-   //Ship Variable
+   //Ship Variables
    char playerB4[2][4] = {{'A', 'A', 'A', 'A'},
                           {'5', '6', '7','8'}};
    char playerB3[2][3] =  {{'E', 'F', 'G'},
@@ -63,7 +63,7 @@ void startGame() {
                          {'3', '4'}};
    char compB1[2][2] =  {{'G', 'H'},
                          {'2', '2'}};
-
+//control display variables
    int turn, hit, col, bcol, row, turnPrint = 0;
    bool winner = false;
    int the_winner = 0;
@@ -81,9 +81,9 @@ void startGame() {
    char yAxis[10] = {'A','B','C','D','E','F','G','H','I','J'};
    char xAxis[10] = {'0','1','2','3','4','5','6','7','8','9'};
    int yUp, xUp;
-
+//clean up
    system("clear");
-
+//print header
    printLogo();
 
    do {
@@ -125,7 +125,9 @@ void startGame() {
                xUp = col;
          }
          player_board_array[yUp][xUp] = '1';
-      }
+      } //end of loop
+	   
+	   
 
       //loop for gameplay
       do {
@@ -191,7 +193,8 @@ void startGame() {
                     yUp = col;
                  if (move[1] == xAxis[col])               
                     xUp = col;
-             }
+             }	//end of loop
+		  
 
      // Display results, save move and updated proper counter
 		  
@@ -210,7 +213,8 @@ void startGame() {
                 playerMovesMiss[1][pMissCount] = move[1];
                 comp_board_array[yUp][xUp] = 'X';       // place piece on board
                 pMissCount++;
-             }
+             } //end of loop
+		  
              
      // Set turn to Computer
              turn = 1;
@@ -234,7 +238,8 @@ void startGame() {
                      compHit[0] = 'x';
                      compHit[1] = 'x';
                  }
-	     } while ( valid != 'Y' );
+	     } while ( valid != 'Y' ); //end of loop
+		  
 
      // Check if it is a hit and updated ship
              for (col= 0; col< 4 ; col++) {
@@ -269,7 +274,8 @@ void startGame() {
                     yUp = col;
                  if (move[1] == xAxis[col])               
                     xUp = col;
-             }
+             } //end of loop
+		  
 
              // Display results, save move and updated proper counter
              if (hit == 1) {
@@ -291,7 +297,8 @@ void startGame() {
              }
 
              turn = 0;
-          }
+          }	//end of loop
+	      
 
           //temp counter to test function until we have method to check for winner
           winner = true;
@@ -313,10 +320,10 @@ void startGame() {
                 winner = false;
              }
           }
-          if ( winner == true);
+          if ( winner == true); //if player wins
              the_winner = 1;
 
-          if ( winner != true) {
+          if ( winner != true) { //if computer wins
              winner = true;
              for (col= 0; col< 4 ; col++) {
                 if ( playerB4[0][col] != 'x' && playerB4[1][col] != 'x' ) {
@@ -337,11 +344,13 @@ void startGame() {
                 }
              }
              if ( winner == true);
-                the_winner = 0;
+                the_winner = 0; 
           }
           turnCount ++;
-      } while ( winner == false );
+      } while ( winner == false ); //end of loop
+	   
 	
+  //display winner
 	display_win_screen(the_winner);
 	
 
