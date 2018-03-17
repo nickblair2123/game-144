@@ -152,7 +152,7 @@ void startGame() {
                    if ( playerMovesHits[0][col] == move[0] && playerMovesHits[1][col] == move[1] ) {
                       valid = 'N';
                       printf("Location Already Played.\n");
-                   }
+                    }
                    if ( playerMovesMiss[0][col] == move[0] && playerMovesMiss[1][col] == move[1] ) {
                       valid = 'N';
                       printf("Location Already Played.\n");
@@ -186,8 +186,8 @@ void startGame() {
                    compB1[0][col] = 'x';
                    compB1[1][col] = 'x';
                 }
-             }
-
+             }   
+		  
              for (col = 0; col < 10; col++) {
                  if (move[0] == yAxis[col]) 
                     yUp = col;
@@ -220,6 +220,7 @@ void startGame() {
              turn = 1;
           } else {
              do {
+        //computer makes a move
                 compTurn( compHit[0], compHit[1], &move[0], &move[1]);
                 printf("Comps Turn: %c and %c\n", move[0], move[1]);
 
@@ -240,7 +241,6 @@ void startGame() {
                  }
 	     } while ( valid != 'Y' ); //end of loop
 		  
-
      // Check if it is a hit and updated ship
              for (col= 0; col< 4 ; col++) {
                 if ( playerB4[0][col] == move[0] && playerB4[1][col] == move[1] ) {
@@ -278,7 +278,7 @@ void startGame() {
 		  
 
              // Display results, save move and updated proper counter
-             if (hit == 1) {
+             if (hit == 1) {  //if boat sinks
                 printf("You have landed a HIT!\n");
                 compMovesHits[0][cHitCount] = move[0];
                 compMovesHits[1][cHitCount] = move[1];
@@ -286,7 +286,7 @@ void startGame() {
                 compHit[1] = move[1];
                 player_board_array[yUp][xUp] = 'H';
                 cHitCount++;
-             } else {
+             } else {    //if boat doesn't sink
                 printf("Sorry you missed.\n");
                 compMovesMiss[0][cMissCount] = move[0];
                 compMovesMiss[1][cMissCount] = move[1];
@@ -354,7 +354,7 @@ void startGame() {
 	display_win_screen(the_winner);
 	
 
-      //after game check if user wants to play again.
+   //after game check if user wants to play again.
       do {
             printf("Play again? (y/n): ");
             exit = toupper(getchar());
@@ -363,6 +363,10 @@ void startGame() {
    } while ( exit != 'N' );
 }
 
+//start game again
+
+
+//header
 void printLogo() {
 
    //placeholder
