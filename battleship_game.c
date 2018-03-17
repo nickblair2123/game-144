@@ -6,7 +6,6 @@
 #include <time.h>
 #include <unistd.h>
 #include "battleship_game.h"
-#include "battleship_board.h"
 #include "turn_play.h"
 #include "display_win_screen.c"
 #include "start_exit.c"
