@@ -12,7 +12,7 @@
 #define row_length 10
 #define col_length 11
 
-//array lenth
+//array length
 #define L 100
 const char alpha_header[row_length] =  {'A','B','C','D','E','F','G','H','I','J'};
 char player_board_array[row_length][col_length] =  {
@@ -193,7 +193,9 @@ void startGame() {
                     xUp = col;
              }
 
-             // Display results, save move and updated proper counter
+     // Display results, save move and updated proper counter
+		  
+	    // if player hit boat place "H"
              if (hit == 1) {
                 printf("You have landed a HIT!\n");
                 playerMovesHits[0][pHitCount] = move[0];
@@ -201,6 +203,7 @@ void startGame() {
                 comp_board_array[yUp][xUp] = 'H';       // place piece on board
                 hit = 0;
                 pHitCount++;
+	    //if player misses boat place "X"
              } else {
                 printf("Sorry you missed.\n");
                 playerMovesMiss[0][pMissCount] = move[0];
@@ -209,7 +212,7 @@ void startGame() {
                 pMissCount++;
              }
              
-             // Set turn to Computer
+     // Set turn to Computer
              turn = 1;
           } else {
              do {
@@ -233,7 +236,7 @@ void startGame() {
                  }
 	     } while ( valid != 'Y' );
 
-             // Check if it is a hit and updated ship
+     // Check if it is a hit and updated ship
              for (col= 0; col< 4 ; col++) {
                 if ( playerB4[0][col] == move[0] && playerB4[1][col] == move[1] ) {
                    hit = 1;
