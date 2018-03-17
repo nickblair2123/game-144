@@ -1,4 +1,4 @@
-//For player anc computer turn play
+//For player and computer turn play
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -6,7 +6,7 @@
 #include <math.h>
 #include "turn_play.h"
 
-//array lenth
+//array length
 #define L 100
 
 void playerTurn (char *x, char *y) {
@@ -15,6 +15,8 @@ void playerTurn (char *x, char *y) {
     char xValid = 'N';
     char clearReturn;
     int  testY;
+    
+//player chooses location of hit
     do {
        printf("Select location of next attack. Y-axis (a-j): ");
        inY = toupper(getchar());
@@ -47,7 +49,7 @@ void compTurn (char yHit, char xHit, char *y, char *x) {
     int nextHitRand;
     char yValid, xValid;
 
-
+//computer randomly chooses location of hit
     srand(time(NULL));
     do {
         yValid = 'N';
@@ -105,6 +107,7 @@ void firstPlayer(int *turn) {
    char coinToss;
    int  coinFlip;
 
+//Randomly choose who starts
    do {
       printf("Pick Heads or Tails to see who will go first. (h/t): ");
       coinToss = toupper(getchar());
