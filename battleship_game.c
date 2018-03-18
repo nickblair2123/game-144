@@ -58,7 +58,7 @@ void startGame() {
    char compB4[2][4] =  {{'D', 'D', 'D', 'D'},
                          {'5', '6', '7','8'}};
    char compB3[2][3] =  {{'G', 'G', 'G'},
-                         {'1', '2', '3'}};
+                         {'4', '5', '6'}};
    char compB2[2][2] =  {{'A', 'A'},
                          {'3', '4'}};
    char compB1[2][2] =  {{'G', 'H'},
@@ -222,7 +222,7 @@ void startGame() {
              do {
         //computer makes a move
                 compTurn( compHit[0], compHit[1], &move[0], &move[1]);
-                printf("Comps Turn: %c and %c\n", move[0], move[1]);
+                printf("Computer's Turn: %c and %c\n", move[0], move[1]);
 
                 for (col= 0; col< L ; col++) {
                    if ( compMovesHits[0][col] == move[0] && compMovesHits[1][col] == move[1] ) {
@@ -321,7 +321,7 @@ void startGame() {
              }
           }
           if ( winner == true); //if player wins
-             the_winner = 1;
+             the_winner = 0;
 
           if ( winner != true) { //if computer wins
              winner = true;
@@ -344,7 +344,7 @@ void startGame() {
                 }
              }
              if ( winner == true);
-                the_winner = 0; 
+                the_winner = 1; 
           }
           turnCount ++;
       } while ( winner == false ); //end of loop

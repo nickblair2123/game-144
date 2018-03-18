@@ -3,7 +3,7 @@
 
 void display_win_screen (int the_winner){
 
-	if (the_winner == '0'){
+	if (the_winner == 0){
 		printf("Congratulations!! You WON!");
 
 	} else {

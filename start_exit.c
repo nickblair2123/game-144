@@ -5,7 +5,7 @@ char start_exit ()
 	char choice;
 	
 	do{
-		printf("Are you ready to start the game? (s)tart, (e)xit");
+		printf("Are you ready to start the game? (s)tart, (e)xit: ");
 		scanf("%c",&choice);
 		getchar();
 		
